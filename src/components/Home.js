@@ -131,7 +131,7 @@ const Home = () => {
         </form>
 
         {/* Display the student details */}
-        {display==true? <div id="details" className='w-full px-2 overflow-x-auto'>
+        {display===true? <div id="details" className='w-full px-2 overflow-x-auto'>
           <table className='min-w-[1136px] '>
             <thead className='border-2 border-black w-full'>
               <tr className='flex font-medium bg-slate-200'>
