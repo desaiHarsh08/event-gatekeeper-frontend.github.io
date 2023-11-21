@@ -50,11 +50,13 @@ const Home = () => {
         heading.classList.toggle('hidden');
         form.classList.toggle('hidden');
         display.classList.toggle('hidden');
-      }, 2000);
+      }, 1000);
       heading.classList.toggle('hidden');
       form.classList.toggle('hidden');
       display.classList.toggle('hidden');
     }
+
+    document.getElementById('rfid').value = '';
 
   }
   return (
@@ -69,23 +71,23 @@ const Home = () => {
           <form onSubmit={handleSubmit} id='form'>
             <div className="my-3 rfid">
               <label htmlFor="rfid"></label>
-              <input type="text" name="rfid" id="rfid" className='border border-slate-500 px-4 py-2 w-full rounded-md focus-within:outline-blue-300 focus:border-blue-300 ' />
+              <input autoFocus type="text" name="rfid" id="rfid" className='border border-slate-500 px-4 py-2 w-full rounded-md focus-within:outline-blue-300 focus:border-blue-300 ' />
             </div>
             <div className="btn">
               <button type='submit' className='px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md '>Search</button>
             </div>
           </form>
           {/* Display the data */}
-          <div id='display' className='hidden'>
+          <div id='display' className='hidden w-full '>
           {
             data !== null ?
-              <div className=' flex flex-col my-7 '>
-                <div className=' font-medium  inline'>
-                  <span className='block my-1 text-xl'>RFID: {data?.event===null?data?.rfid:''}</span>
-                  <span className='block my-1 text-xl'>{data?.event!==null?data?.event:''}</span>
-                  <span className='block my-1 text-xl'>{data?.name!==null?data?.name: ''}</span>
+              <div className=' flex flex-col my-7 items-center '>
+                <div className=' font-medium  inline text-center '>
+                  {/* <span className='block my-1 text-xl'>RFID: {data?.rfid}</span> */}
+                  <span className='block my-3 text-xl'>{data?.event!==null?data?.event:''}</span>
+                  <span className='block my-3 text-xl'>{data?.name!==null?data?.name: ''}</span>
                   <div className='my-4' >
-                  <span className={`px-4 py-2 rounded-full ${data?.status===true?'bg-green-500':'bg-red-500'} text-white`}>{data?.status === true ? "ALLOWED" : "NOT ALLOWED"}</span>
+                  <span className={`text-2xl px-4 py-2 rounded-full ${data?.status===true?'bg-green-500':'bg-red-500'} text-white`}>{data?.status === true ? "ALLOWED" : "NOT ALLOWED"}</span>
                   </div>
                 </div>
               </div>
