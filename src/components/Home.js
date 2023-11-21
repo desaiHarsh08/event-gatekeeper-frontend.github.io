@@ -8,10 +8,13 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState(null);
+  const [flag, setFlag] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const rfid = document.getElementById('rfid').value;
+
+
     setData(null);
     if (rfid === '') {
       alert("Invalid RFID...!");
@@ -29,12 +32,7 @@ const Home = () => {
       setLoading(false);
       if (!res.ok) {
         // alert(`${rfid} - NOT ALLOWED`);
-        setData({
-          name: null,
-          rfid: rfid,
-          event: null,
-          status: false
-        })
+        setData(null)
         console.log(rfid)
         // return;
       }
@@ -79,20 +77,23 @@ const Home = () => {
           </form>
           {/* Display the data */}
           <div id='display' className='hidden w-full '>
-          {
-            data !== null ?
-              <div className=' flex flex-col my-7 items-center '>
-                <div className=' font-medium  inline text-center '>
-                  {/* <span className='block my-1 text-xl'>RFID: {data?.rfid}</span> */}
-                  <span className='block my-3 text-xl'>{data?.event!==null?data?.event:''}</span>
-                  <span className='block my-3 text-xl'>{data?.name!==null?data?.name: ''}</span>
-                  <div className='my-4' >
-                  <span className={`text-2xl px-4 py-2 rounded-full ${data?.status===true?'bg-green-500':'bg-red-500'} text-white`}>{data?.status === true ? "ALLOWED" : "NOT ALLOWED"}</span>
+            {
+              data !== null ?
+                <div className=' flex flex-col my-7 items-center '>
+                  <div className=' font-medium  inline text-center '>
+                    {/* <span className='block my-1 text-xl'>RFID: {data?.rfid}</span> */}
+                    <span className='block my-3 text-xl'>{data?.student.event !== null ? data?.student?.event : ''}</span>
+                    <span className='block my-3 text-xl'>{data?.student?.name !== null ? data?.student?.name : ''}</span>
+                    <div className='my-4' >
+                      <span className={`text-2xl px-4 py-2 rounded-full ${data?.isAlreadyMarked === false ? 'bg-green-500' : 'bg-yellow-500'} text-white`}>{data?.isAlreadyMarked === false ? "ALLOWED" : "ALREADY ALLOWED"}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              : ''
-          }
+                :
+                  <div className="flex justify-center">
+                    <span className={`text-2xl px-4 py-2 rounded-full bg-red-500 text-white`}>NOT ALLOWED</span>
+                  </div>
+            }
 
           </div>
         </div>
