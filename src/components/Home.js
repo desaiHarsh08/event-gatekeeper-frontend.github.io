@@ -8,6 +8,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState(null);
+  // eslint-disable-next-line
   const [flag, setFlag] = useState(false);
 
   const handleSubmit = async (e) => {
