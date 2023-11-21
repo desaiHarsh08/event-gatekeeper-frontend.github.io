@@ -149,6 +149,7 @@ const Settings = () => {
     const data = await res.json();
     setLoading(false);
     if (data.length !== 0) {
+      const arr = [];
       for (let i = 0; i < data.length; i++) {
         if (data[i].attendance === true) {
           data[i].attendance = 'Y';
@@ -156,8 +157,14 @@ const Settings = () => {
         else {
           data[i].attendance = 'N';
         }
+        arr.push({
+          rfid: data[i].rfid,
+          name: data[i].name,
+          event: data[i].event,
+          attendance: data[i].attendance,
+        });
       }
-      downloadExcel(data);
+      downloadExcel(arr);
     }
   }
 
