@@ -10,7 +10,7 @@ const Navbar = () => {
                 <span className='text-xl'>@Event_Gatekeeper</span>
             </Link>
         </div>
-        <div id="right" className='w-full sm:w-auto'>
+        {/* <div id="right" className='w-full sm:w-auto'>
             <ul className='w-full flex gap-6 my-2 sm:my-0 sm:gap-3 justify-center '>
                 <li className='hover:text-slate-200 '>
                     <Link to={'/'} >
@@ -28,7 +28,7 @@ const Navbar = () => {
                     </Link>
                 </li>
             </ul>
-        </div>
+        </div> */}
       </nav>
     </header>
   )
