@@ -6,8 +6,7 @@ import {
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Settings from "./components/Settings";
-import About from "./components/About";
+
 
 function App() {
   return (
